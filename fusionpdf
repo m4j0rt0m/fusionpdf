@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e  # Exit on any error
+
+# Check if three arguments are provided
+if [[ $# -ne 3 ]]; then
+    echo "Usage: $0 <input1.pdf> <input2.pdf> <output.pdf>"
+    exit 1
+fi
+
+INPUT1=$1
+INPUT2=$2
+OUTPUT=$3
+
+# Extract images from the PDFs
+pdfimages -png "$INPUT1" input1
+pdfimages -png "$INPUT2" input2
+
+# Blend the extracted images and normalize the result
+convert input1-000.png input2-000.png -gravity center -evaluate-sequence mean -normalize overlay.png
+
+# Convert the blended image to the specified output PDF
+convert overlay.png "$OUTPUT"
+
+# Clean up temporary files
+rm -f input1-000.png input2-000.png overlay.png
+
+# Success message
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+echo -e "${GREEN}FusionPDF: Successfully created the overlay PDF at: $OUTPUT${NC}"
+echo -e "${GREEN}Inputs: $INPUT1 and $INPUT2${NC}"
