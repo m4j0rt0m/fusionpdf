@@ -48,8 +48,14 @@ fusionpdf <input1.pdf> <input2.pdf> <output.pdf>
 
 ### Examples
 
-1. Combine two PDFs: `fusionpdf front.pdf back.pdf result.pdf`
-2. Overlay and save to a specific path: `fusionpdf cover.pdf watermark.pdf ~/Documents/combined.pdf`
+1. Combine two PDFs:
+```
+fusionpdf front.pdf back.pdf result.pdf
+```
+2. Overlay and save to a specific path:
+```
+fusionpdf cover.pdf watermark.pdf ~/Documents/combined.pdf
+```
 
 > If you omit any required argument, the tool will display usage instructions.
 
