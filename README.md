@@ -44,7 +44,9 @@ sudo cp fusionpdf /usr/local/bin/
 
 ### Basic Syntax
 
+```
 fusionpdf <input1.pdf> <input2.pdf> <output.pdf>
+```
 
 ### Examples
 
