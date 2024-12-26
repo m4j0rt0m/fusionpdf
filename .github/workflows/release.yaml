@@ -39,7 +39,10 @@ jobs:
 
     - name: Upload Debian package to release
       uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        upload_url: ${{ github.event.release.upload_url }}
         asset_path: ./fusionpdf_${VERSION}_all.deb
         asset_name: fusionpdf_${VERSION}_all.deb
-        content_type: application/octet-stream
+        asset_content_type: application/octet-stream
