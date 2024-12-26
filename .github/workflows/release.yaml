@@ -13,6 +13,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Extract version
+      run: |
+        VERSION=${GITHUB_REF##*/}
+        VERSION=${VERSION#v}
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
     - name: Set up packaging directory
       run: |
         mkdir -p debian/DEBIAN
@@ -22,7 +28,6 @@ jobs:
 
     - name: Create control file
       run: |
-        VERSION=${{ github.ref_name#v }}
         echo "Package: fusionpdf" > debian/DEBIAN/control
         echo "Version: $VERSION" >> debian/DEBIAN/control
         echo "Architecture: all" >> debian/DEBIAN/control
@@ -30,11 +35,11 @@ jobs:
         echo "Description: A lightweight CLI tool to blend and overlay two PDFs." >> debian/DEBIAN/control
 
     - name: Build Debian package
-      run: dpkg-deb --build debian fusionpdf_${{ github.ref_name#v }}_all.deb
+      run: dpkg-deb --build debian fusionpdf_${VERSION}_all.deb
 
     - name: Upload Debian package to release
       uses: actions/upload-release-asset@v1
       with:
-        asset_path: ./fusionpdf_${{ github.ref_name#v }}_all.deb
-        asset_name: fusionpdf_${{ github.ref_name#v }}_all.deb
+        asset_path: ./fusionpdf_${VERSION}_all.deb
+        asset_name: fusionpdf_${VERSION}_all.deb
         content_type: application/octet-stream
