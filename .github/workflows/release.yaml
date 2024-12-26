@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up packaging directory
+      run: |
+        mkdir -p debian/DEBIAN
+        mkdir -p debian/usr/bin
+        cp fusionpdf debian/usr/bin/
+        chmod +x debian/usr/bin/fusionpdf
+
+    - name: Create control file
+      run: |
+        echo "Package: fusionpdf" > debian/DEBIAN/control
+        echo "Version: ${{ github.ref_name }}" >> debian/DEBIAN/control
+        echo "Architecture: all" >> debian/DEBIAN/control
+        echo "Depends: imagemagick, poppler-utils" >> debian/DEBIAN/control
+        echo "Description: A lightweight CLI tool to blend and overlay two PDFs." >> debian/DEBIAN/control
+
+    - name: Build Debian package
+      run: dpkg-deb --build debian fusionpdf_${{ github.ref_name }}.deb
+
+    - name: Upload Debian package to release
+      uses: actions/upload-release-asset@v1
+      with:
+        asset_path: ./fusionpdf_${{ github.ref_name }}.deb
+        asset_name: fusionpdf_${{ github.ref_name }}.deb
+        content_type: application/octet-stream
