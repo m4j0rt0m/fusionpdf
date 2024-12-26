@@ -19,9 +19,6 @@ jobs:
         VERSION=${VERSION#v}
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-    - name: Debug version
-      run: echo "Version is $VERSION"
-
     - name: Set up packaging directory
       run: |
         mkdir -p debian/DEBIAN
@@ -47,6 +44,6 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./fusionpdf_${VERSION}_all.deb
-        asset_name: fusionpdf_${VERSION}_all.deb
+        asset_path: ./fusionpdf_${{ env.VERSION }}_all.deb
+        asset_name: fusionpdf_${{ env.VERSION }}_all.deb
         asset_content_type: application/octet-stream
