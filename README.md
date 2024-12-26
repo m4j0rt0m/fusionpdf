@@ -86,3 +86,37 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Acknowledgments
 
 FusionPDF leverages the power of ImageMagick and Poppler-utils to deliver its functionality.
+
+---
+
+## Troubleshooting
+
+### i) `convert: attempt to perform an operation not allowed by the security policy 'PDF'`
+
+**Cause**: This error occurs because ImageMagick's default security policy restricts PDF operations.
+
+**Solution**:
+1. Locate the `policy.xml` file:
+```bash
+locate policy.xml | grep ImageMagick
+```
+>Common locations:
+>* /etc/ImageMagick-6/policy.xml
+>* /usr/lib/ImageMagick-6.9.10/config-Q16/policy.xml
+
+2. Edit the file with a text editor:
+```bash
+sudo nano /etc/ImageMagick-6/policy.xml
+```
+
+3. Find the line restricting PDF operations:
+```xml
+<policy domain="coder" rights="none" pattern="PDF" />
+```
+
+4. Change `rights="none"` to `rights="read|write"`:
+```xml
+<policy domain="coder" rights="read|write" pattern="PDF" />
+```
+
+5. Save the policy file, restart your terminal and try again, it should be solved.
