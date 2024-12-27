@@ -1,6 +1,7 @@
 # FusionPDF
 
 <p align="center">
+  <img src="doc/logo-header.png" alt="FusionPDF logo header"><br>
   A command-line tool for blending and overlaying two PDF files into one.<br>
   <a href="https://github.com/m4j0rt0m/fusionpdf/actions"><img src="https://github.com/m4j0rt0m/fusionpdf/actions/workflows/release.yaml/badge.svg" alt="Build Status"></a>
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="license">
