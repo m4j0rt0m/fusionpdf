@@ -1,5 +1,3 @@
-# FusionPDF
-
 <p align="center">
   <img src="doc/logo-header.png" alt="FusionPDF logo header"><br>
   A command-line tool for blending and overlaying two PDF files into one.<br>
