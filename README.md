@@ -2,6 +2,14 @@
 
 FusionPDF is a lightweight command-line tool designed to blend and overlay two PDF files into a single polished output. Whether you’re creating composite documents, overlays, or simply combining pages with precision, FusionPDF makes it simple and efficient.
 
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#troubleshooting">Troubleshooting</a> •
+  <a href="#contributions">Contributions</a><br>
+</p>
+
 ---
 
 ## Features
