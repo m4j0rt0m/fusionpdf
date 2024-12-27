@@ -24,17 +24,40 @@ FusionPDF requires the following tools:
 Install them with:
 ```bash
 sudo apt update
+```
+```bash
 sudo apt install imagemagick poppler-utils
 ```
 
 ### Install FusionPDF
 
-Clone the repository and use the script directly:
+#### From GitHub Releases
 
+1. Download the latest `.deb` package from the [Releases](https://github.com/m4j0rt0m/fusionpdf/releases) page.
+2. Install the package using `dpkg`:
+```bash
+sudo dpkg -i fusionpdf_<version>_all.deb
 ```
+Or, use `apt` for a simpler installation:
+```bash
+sudo apt install ./fusionpdf_<version>_all.deb
+```
+3. Resolve any missing dependencies:
+```bash
+sudo apt-get install -f
+```
+
+#### From Source
+
+1. Clone the repository and use the script directly:
+```bash
 git clone https://github.com/m4j0rt0m/fusionpdf.git
+```
+```bash
 cd fusionpdf
-chmod +x fusionpdf
+```
+2. Move the script to a directory in your PATH, such as /usr/local/bin:
+```bash
 sudo cp fusionpdf /usr/local/bin/
 ```
 
@@ -44,18 +67,18 @@ sudo cp fusionpdf /usr/local/bin/
 
 ### Basic Syntax
 
-```
+```bash
 fusionpdf <input1.pdf> <input2.pdf> <output.pdf>
 ```
 
 ### Examples
 
 1. Combine two PDFs:
-```
+```bash
 fusionpdf front.pdf back.pdf result.pdf
 ```
 2. Overlay and save to a specific path:
-```
+```bash
 fusionpdf cover.pdf watermark.pdf ~/Documents/combined.pdf
 ```
 
