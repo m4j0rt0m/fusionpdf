@@ -1,7 +1,7 @@
 # FusionPDF
 
 <p align="center">
-  <a href="https://github.com/m4j0rt0m/fusionpdf">FusionPDF</a> - A command-line tool for blending and overlaying two PDF files into one.<br>
+  A command-line tool for blending and overlaying two PDF files into one.<br>
   <a href="https://github.com/m4j0rt0m/fusionpdf/actions"><img src="https://github.com/m4j0rt0m/fusionpdf/actions/workflows/release.yaml/badge.svg" alt="Build Status"></a>
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="license">
   <a href="https://github.com/m4j0rt0m/fusionpdf/releases"><img src="https://img.shields.io/github/v/release/m4j0rt0m/fusionpdf" alt="Version info"></a>
